@@ -1,0 +1,68 @@
+using System;
+
+namespace quetesLesClasses
+{
+    public class Character
+
+    {
+        public string name;
+        public int lifePoint;
+        public int attackPower;
+        public int defensePower;
+
+        public bool IsAlive()
+        {
+            if (lifePoint > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int Attack(Character character)
+        {
+            lifePoint = lifePoint - (attackPower - defensePower);
+            return lifePoint;
+        }
+    }
+    
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Character characterOne = new Character();
+                {
+                    characterOne.name = "Pierre";
+                    characterOne.lifePoint = 20;
+                    characterOne.attackPower = 5;
+                    characterOne.defensePower = 2;
+                }
+
+            Character characterTwo = new Character();
+                {
+                    characterOne.name = "Paul";
+                    characterOne.lifePoint = 30;
+                    characterOne.attackPower = 12;
+                    characterOne.defensePower = 8;
+                }
+
+                while ((characterOne.IsAlive() == true) && (characterTwo.IsAlive()==true))
+                {       
+                    characterTwo.Attack(characterOne);
+                    characterOne.Attack(characterTwo);
+                }
+                if (characterOne.IsAlive()==false)
+                {
+                Console.WriteLine("The winner is: " + characterTwo.name);
+                }
+                else
+                {
+                Console.WriteLine("The winner is: " + characterOne.name);
+            }
+        }
+    }
+}
